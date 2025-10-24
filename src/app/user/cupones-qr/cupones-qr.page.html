@@ -1,0 +1,16 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>cupones-qr</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()" fill="clear">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center">
+<qrcode [qrdata]="qrTexto" [width]="400" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+</ion-content>

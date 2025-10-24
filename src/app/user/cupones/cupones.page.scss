@@ -1,0 +1,77 @@
+.campania-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  margin-bottom: 16px;
+}
+
+.campania-card .title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #15384e;
+}
+
+.campania-card .descripcion {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.chips-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+ion-card.asignado {
+  opacity: 0.6;
+  border: 2px solid #f44336;
+  pointer-events: none;
+}
+
+.subtitle {
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  color: var(--ion-color-secondary);
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--ion-color-primary);
+  margin-bottom: 12px;
+}
+
+.descripcion {
+  font-size: 1rem;
+  color: var(--ion-color-dark);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.chips-container {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+ion-chip {
+  font-weight: 600;
+  border-radius: 16px;
+  --ion-color-base: transparent;
+  --ion-chip-outline-color: var(--ion-color-primary);
+  --ion-color-text: var(--ion-color-primary);
+  box-shadow: 0 1px 4px rgba(21, 56, 78, 0.15);
+  padding: 6px 12px;
+}
+
+ion-chip ion-icon {
+  margin-right: 6px;
+  font-size: 1.2rem;
+  vertical-align: middle;
+  color: var(--ion-color-primary);
+}

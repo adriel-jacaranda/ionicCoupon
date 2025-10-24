@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Reclamar Cupón</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-item>
+    <ion-label>Controlar por</ion-label>
+    <ion-select [(ngModel)]="modo" interface="popover" (ionChange)="onModoChange($event)">
+      <ion-select-option value="qr">QR</ion-select-option>
+      <ion-select-option value="codigo">Código de cupón</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- MODO QR -->
+  <div *ngIf="modo === 'qr'">
+    <div class="intro-text ion-text-center ion-margin-bottom">
+      <h2>Escanea tu código QR para reclamar tu cupón</h2>
+      <p>Usa el botón para activar la cámara y escanear el código.</p>
+    </div>
+
+    <ion-button expand="block" color="secondary" (click)="scanCode()">
+      <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+      Escanear Código QR
+    </ion-button>
+  </div>
+
+  <!-- MODO CÓDIGO -->
+  <form *ngIf="modo === 'codigo'" (ngSubmit)="reclamarPorCodigo()" [formGroup]="codigoForm">
+    <ion-item>
+      <ion-label position="floating">Código de cupón</ion-label>
+      <ion-input formControlName="codigo" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">DNI</ion-label>
+      <ion-input formControlName="dni" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" color="secondary" [disabled]="codigoForm.invalid">
+      Canjear Cupón
+    </ion-button>
+  </form>
+
+  <!-- RESULTADO -->
+  <ion-card
+    *ngIf="scannerResult"
+    class="result-card ion-margin-top alert-card"
+    role="alert"
+    aria-live="polite"
+    aria-atomic="true"
+  >
+    <ion-card-header>
+      <ion-icon name="checkmark-circle-outline" color="success" slot="start"></ion-icon>
+      <ion-card-title class="alert-title">Resultado</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <pre>{{ scannerResult }}</pre>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

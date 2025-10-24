@@ -1,0 +1,7 @@
+{
+  "name": "CouponSystem",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,56 @@
+ion-content {
+  --background: #f7f9fc;
+}
+
+.almacen-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #15384e, #1e5f7c);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.almacen-banner img {
+max-width: 120px;
+    height: 120px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.almacen-info {
+  text-align: center;
+}
+
+.almacen-nombre {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #15384e;
+  margin-bottom: 5px;
+}
+
+.almacen-descripcion {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.almacen-datos ion-item {
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.almacen-datos ion-icon {
+  font-size: 1.4rem;
+}
+
+ion-button {
+  border-radius: 10px;
+  font-weight: 600;
+  --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

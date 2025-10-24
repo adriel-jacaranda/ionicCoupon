@@ -1,0 +1,79 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Campañas disponibles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" *ngFor="let campania of campanias">
+        <ion-card class="campania-card">
+          <ion-img [src]="campania.banner" class="banner"></ion-img>
+          <ion-card-header>
+            <ion-card-title class="titulo">{{ campania.nombre }}</ion-card-title>
+            <ion-card-subtitle>{{ campania.tipo_cliente?.nombre }}</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p class="descripcion">{{ campania.descripcion }}</p>
+<ion-item lines="none" *ngIf="campania.descuento_porcentaje && campania.descuento_porcentaje > 0">
+  <ion-label color="medium">Descuento</ion-label>
+  <ion-badge color="success" slot="end">
+    {{ campania.descuento_porcentaje }}%
+  </ion-badge>
+</ion-item>
+
+<ion-item lines="none" *ngIf="campania.compra_minima && campania.compra_minima > 0">
+  <ion-label color="medium">Compra mínima</ion-label>
+  <ion-note slot="end">
+    ${{ campania.compra_minima }}
+  </ion-note>
+</ion-item>
+
+<ion-item lines="none" *ngIf="campania.compra_maxima && campania.compra_maxima > 0">
+  <ion-label color="medium">Compra máxima</ion-label>
+  <ion-note slot="end">
+    ${{ campania.compra_maxima }}
+  </ion-note>
+</ion-item>
+
+
+            <ion-item lines="none">
+              <ion-label color="medium">Válido hasta</ion-label>
+              <ion-note slot="end">
+                {{ campania.fecha_caducidad | date: 'mediumDate' }}
+              </ion-note>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-label color="medium">Cupones activos para reclamar</ion-label>
+              <ion-note slot="end">{{ campania.cantidad_maxima }}</ion-note>
+            </ion-item>
+
+            <!-- Almacenes -->
+            <div class="almacenes-container ion-padding-top">
+              <ion-label color="medium">Canjea en:</ion-label>
+              <div class="almacenes-chips">
+                <div
+                  class="almacen-chip"
+                  *ngFor="let almacen of campania.almacenes"
+                  (click)="openAlmacenModal(almacen)"
+                >
+                  <img [src]="almacen.logo" [alt]="almacen.nombre" />
+                </div>
+              </div>
+            </div>
+
+            <div class="ion-text-center ion-padding-top">
+              <ion-button color="primary" (click)="goCoupons(campania)">
+                <ion-icon name="ticket-outline" slot="start"></ion-icon>
+                Ver cupones
+              </ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

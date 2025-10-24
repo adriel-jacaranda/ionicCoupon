@@ -1,0 +1,81 @@
+.campania-card {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  .titulo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #15384e;
+  }
+
+  ion-item {
+    --background: transparent;
+    font-size: 0.9rem;
+  }
+
+  ion-badge {
+    font-size: 0.9rem;
+  }
+}
+
+.banner {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.titulo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #15384e;
+}
+
+.descripcion {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.almacenes-container {
+  margin-top: 12px;
+}
+
+.almacenes-chips {
+  display: flex;
+  gap: 12px; /* Aumentamos la separación entre los chips */
+  margin-top: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.almacen-chip {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  animation: bounceSlow 3s ease-in-out infinite; /* Rebote cada 3s */
+}
+
+@keyframes bounceSlow {
+  0%   { transform: scale(1); }
+  10%  { transform: scale(1.15); }
+  20%  { transform: scale(0.95); }
+  30%  { transform: scale(1.05); }
+  40%  { transform: scale(1); }
+  100% { transform: scale(1); } /* Espera hasta el próximo ciclo */
+}
+
+.almacen-chip img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain
+}

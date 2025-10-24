@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ campania?.nombre || 'Cupones' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Detalle de la campaña -->
+  <ion-card *ngIf="campania" class="campania-card">
+    <!-- Banner de la campaña -->
+    <img *ngIf="campania.banner" [src]="campania.banner" alt="Banner de campaña" style="width: 100%; border-radius: 8px 8px 0 0;">
+
+    <ion-card-header>
+      <ion-card-subtitle color="secondary" class="subtitle">Descripción de la campaña</ion-card-subtitle>
+      <ion-card-title class="title">{{ campania.nombre }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="descripcion">{{ campania.descripcion }}</p>
+
+      <div class="chips-container">
+        <ion-chip color="tertiary" outline>
+          <ion-icon name="calendar-outline"></ion-icon>
+          <ion-label>Caduca: {{ campania.fecha_caducidad | date: 'dd/MM/yyyy' }}</ion-label>
+        </ion-chip>
+
+        <ion-chip color="success" outline *ngIf="campania.cantidad_maxima">
+          <ion-icon name="pricetag-outline"></ion-icon>
+          <ion-label>Máximo cupones: {{ campania.cantidad_maxima }}</ion-label>
+        </ion-chip>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de cupones -->
+<ion-list *ngIf="cupones && cupones.length > 0">
+  <ion-list-header>
+    <ion-label>Cupones disponibles</ion-label>
+  </ion-list-header>
+
+<ion-card *ngFor="let cupon of cupones" [class.asignado]="cupon.asignado">
+  <ion-card-content class="ion-text-center">
+    <h2 style="letter-spacing: 1px; font-weight: bold;">{{ cupon.codigo }}</h2>
+
+    <p *ngIf="cupon.asignado" class="ion-text-center" style="color: red; font-size: 12px; font-weight: 600;">
+      (Ya reclamado)
+    </p>
+
+    <p class="ion-text-end" style="font-size: 12px; color: gray;">
+      Creado: {{ cupon.created_at | date: 'dd/MM/yyyy' }}
+    </p>
+
+    <ion-button
+      expand="block"
+      size="small"
+      color="primary"
+      fill="outline"
+      [disabled]="cupon.asignado"
+      (click)="verCupon(cupon)"
+    >
+      <ion-icon name="eye-outline" slot="start"></ion-icon>
+      Ver cupón
+    </ion-button>
+  </ion-card-content>
+</ion-card>
+
+</ion-list>
+
+
+  <!-- No hay cupones -->
+  <div *ngIf="cupones?.length === 0" class="ion-text-center">
+    <ion-icon name="ticket-outline" size="large" color="medium"></ion-icon>
+    <p>No hay cupones disponibles</p>
+  </div>
+
+</ion-content>
